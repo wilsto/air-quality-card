@@ -1,0 +1,101 @@
+/**
+ * @fileoverview Air quality sensor presets
+ * Default setpoints for indoor air quality monitoring.
+ */
+
+export const AIR_QUALITY_SENSORS = {
+  temperature: {
+    name: 'Temperature',
+    unit: '°C',
+    setpoint: 21,
+    step: 1,
+    mode: 'heatflow',
+  },
+  humidity: {
+    name: 'Humidity',
+    unit: '%',
+    setpoint: 45,
+    step: 5,
+    mode: 'centric',
+    min_limit: 0,
+  },
+  co2: {
+    name: 'CO2',
+    unit: 'ppm',
+    setpoint: 800,
+    step: 200,
+    mode: 'centric',
+    min_limit: 0,
+  },
+  pm25: {
+    name: 'PM2.5',
+    unit: 'µg/m³',
+    setpoint: 12,
+    step: 6,
+    mode: 'centric',
+    min_limit: 0,
+  },
+  pm10: {
+    name: 'PM10',
+    unit: 'µg/m³',
+    setpoint: 25,
+    step: 12,
+    mode: 'centric',
+    min_limit: 0,
+  },
+  voc: {
+    name: 'VOC',
+    unit: 'ppb',
+    setpoint: 250,
+    step: 100,
+    mode: 'centric',
+    min_limit: 0,
+  },
+  tvoc: {
+    name: 'TVOC',
+    unit: 'µg/m³',
+    setpoint: 300,
+    step: 100,
+    mode: 'centric',
+    min_limit: 0,
+  },
+  formaldehyde: {
+    name: 'Formaldehyde',
+    unit: 'µg/m³',
+    setpoint: 30,
+    step: 15,
+    mode: 'centric',
+    min_limit: 0,
+  },
+  radon: {
+    name: 'Radon',
+    unit: 'Bq/m³',
+    setpoint: 100,
+    step: 50,
+    mode: 'centric',
+    min_limit: 0,
+  },
+  aqi: {
+    name: 'Air Quality Index',
+    unit: 'AQI',
+    setpoint: 50,
+    step: 25,
+    mode: 'centric',
+    min_limit: 0,
+  },
+  pressure: {
+    name: 'Atmospheric Pressure',
+    unit: 'hPa',
+    setpoint: 1013,
+    step: 10,
+    mode: 'centric',
+  },
+  noise: {
+    name: 'Noise Level',
+    unit: 'dB',
+    setpoint: 40,
+    step: 10,
+    mode: 'centric',
+    min_limit: 0,
+  },
+};

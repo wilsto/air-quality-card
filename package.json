@@ -1,0 +1,28 @@
+{
+  "name": "air-quality-card",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Air Quality Card for Home Assistant",
+  "main": "dist/air-quality-card.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint \"src/**/*.js\"",
+    "lint:fix": "eslint \"src/**/*.js\" --fix"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-replace": "^6.0.2",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@vitest/coverage-v8": "^4.0.0",
+    "eslint": "^9.20.0",
+    "jsdom": "^26.0.0",
+    "lit": "^3.3.0",
+    "rollup": "^4.34.0",
+    "vitest": "^4.0.0"
+  }
+}
