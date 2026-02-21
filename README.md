@@ -4,8 +4,7 @@
 
 > Visualize the air you breathe — track pollutants, comfort, and health indicators in every room of your home.
 
-<!-- TODO: add hero screenshot -->
-<!-- ![screenshot](example/hero.png) -->
+![screenshot](example/hero.png)
 
 ---
 
@@ -192,8 +191,8 @@ This card is part of the **monitor-cards** family — same rendering engine, sam
 
 <!-- Badges -->
 [release-shield]: https://img.shields.io/github/v/release/wilsto/air-quality-card?style=flat-square
-[release-link]: https://github.com/wilsto/air-quality-card/releases
+[release-link]: https://github.com/wilsto/air-quality-card/releases/latest
 [hacs-shield]: https://img.shields.io/badge/HACS-Default-orange.svg?style=flat-square
 [hacs-link]: https://hacs.xyz/
 [commits-shield]: https://img.shields.io/github/commit-activity/y/wilsto/air-quality-card?style=flat-square
-[commits-link]: https://github.com/wilsto/air-quality-card/commits/master
+[commits-link]: https://github.com/wilsto/air-quality-card/commits/main
