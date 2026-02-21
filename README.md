@@ -34,41 +34,41 @@ Every sensor comes with **preset ideal ranges** — just point to your entity an
 
 *Temperature, humidity, and noise directly affect how comfortable you feel at home.*
 
-| Sensor | Unit | Default Setpoint |
-|--------|------|:----------------:|
-| Temperature | °C | 21 |
-| Humidity | % | 45 |
-| Noise Level | dB | 40 |
+| Sensor | Key | Unit | Default Setpoint |
+|--------|-----|------|:----------------:|
+| Temperature | `temperature` | °C | 21 |
+| Humidity | `humidity` | % | 45 |
+| Noise Level | `noise` | dB | 40 |
 
 ### Particulates
 
 *Fine particles penetrate deep into lungs. PM2.5 is the most health-critical air metric.*
 
-| Sensor | Unit | Default Setpoint |
-|--------|------|:----------------:|
-| PM2.5 | µg/m³ | 12 |
-| PM10 | µg/m³ | 25 |
-| Air Quality Index | AQI | 50 |
+| Sensor | Key | Unit | Default Setpoint |
+|--------|-----|------|:----------------:|
+| PM2.5 | `pm25` | µg/m³ | 12 |
+| PM10 | `pm10` | µg/m³ | 25 |
+| Air Quality Index | `aqi` | AQI | 50 |
 
 ### Gases & Chemicals
 
 *CO2 indicates ventilation quality. VOCs and formaldehyde signal chemical pollution.*
 
-| Sensor | Unit | Default Setpoint |
-|--------|------|:----------------:|
-| CO2 | ppm | 800 |
-| VOC | ppb | 250 |
-| TVOC | µg/m³ | 300 |
-| Formaldehyde | µg/m³ | 30 |
-| Radon | Bq/m³ | 100 |
+| Sensor | Key | Unit | Default Setpoint |
+|--------|-----|------|:----------------:|
+| CO2 | `co2` | ppm | 800 |
+| VOC | `voc` | ppb | 250 |
+| TVOC | `tvoc` | µg/m³ | 300 |
+| Formaldehyde | `formaldehyde` | µg/m³ | 30 |
+| Radon | `radon` | Bq/m³ | 100 |
 
 ### Environment
 
 *Atmospheric pressure changes can trigger migraines and affect weather-sensitive people.*
 
-| Sensor | Unit | Default Setpoint |
-|--------|------|:----------------:|
-| Atmospheric Pressure | hPa | 1013 |
+| Sensor | Key | Unit | Default Setpoint |
+|--------|-----|------|:----------------:|
+| Atmospheric Pressure | `pressure` | hPa | 1013 |
 
 For detailed explanations of each sensor and why it matters, see [Sensor Details](docs/sensors.md).
 
