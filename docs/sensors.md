@@ -6,21 +6,21 @@ This document explains each sensor, why it matters, and what the ideal ranges me
 
 *Temperature, humidity, and noise directly affect how comfortable you feel at home.*
 
-### Temperature
+### Temperature (`temperature`)
 
 - **Unit**: °C
 - **Default setpoint**: 21
 
 Comfort range: 19-22°C. Below 18°C increases respiratory issues.
 
-### Humidity
+### Humidity (`humidity`)
 
 - **Unit**: %
 - **Default setpoint**: 45
 
 Ideal: 40-60%. Below 30% dries mucous membranes. Above 60% promotes mold.
 
-### Noise Level
+### Noise Level (`noise`)
 
 - **Unit**: dB
 - **Default setpoint**: 40
@@ -31,21 +31,21 @@ Below 30 dB for good sleep. Above 65 dB causes stress. WHO recommends <45 dB ind
 
 *Fine particles penetrate deep into lungs. PM2.5 is the most health-critical air metric.*
 
-### PM2.5
+### PM2.5 (`pm25`)
 
 - **Unit**: µg/m³
 - **Default setpoint**: 12
 
 WHO guideline: <15 µg/m³ annual, <45 µg/m³ 24-hour. Fine particles cause cardiovascular issues.
 
-### PM10
+### PM10 (`pm10`)
 
 - **Unit**: µg/m³
 - **Default setpoint**: 25
 
 Larger particles (dust, pollen). WHO guideline: <45 µg/m³ annual.
 
-### Air Quality Index
+### Air Quality Index (`aqi`)
 
 - **Unit**: AQI
 - **Default setpoint**: 50
@@ -56,35 +56,35 @@ Air Quality Index: 0-50 Good, 51-100 Moderate, 101-150 Unhealthy for sensitive g
 
 *CO2 indicates ventilation quality. VOCs and formaldehyde signal chemical pollution.*
 
-### CO2
+### CO2 (`co2`)
 
 - **Unit**: ppm
 - **Default setpoint**: 800
 
 Outdoor baseline: ~420 ppm. Above 1000 ppm indicates poor ventilation. Above 2000 ppm causes drowsiness.
 
-### VOC
+### VOC (`voc`)
 
 - **Unit**: ppb
 - **Default setpoint**: 250
 
 Volatile organic compounds from paints, cleaners, furniture. Below 250 ppb is good.
 
-### TVOC
+### TVOC (`tvoc`)
 
 - **Unit**: µg/m³
 - **Default setpoint**: 300
 
 Total VOC measurement. Useful as a general "chemical pollution" indicator.
 
-### Formaldehyde
+### Formaldehyde (`formaldehyde`)
 
 - **Unit**: µg/m³
 - **Default setpoint**: 30
 
 Off-gases from pressed wood, carpets. WHO limit: 100 µg/m³. Carcinogenic.
 
-### Radon
+### Radon (`radon`)
 
 - **Unit**: Bq/m³
 - **Default setpoint**: 100
@@ -95,7 +95,7 @@ Radioactive gas from soil. #2 cause of lung cancer. Action level: 100-300 Bq/m³
 
 *Atmospheric pressure changes can trigger migraines and affect weather-sensitive people.*
 
-### Atmospheric Pressure
+### Atmospheric Pressure (`pressure`)
 
 - **Unit**: hPa
 - **Default setpoint**: 1013
