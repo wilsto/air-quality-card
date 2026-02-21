@@ -34,6 +34,8 @@ Every sensor comes with **preset ideal ranges** — just point to your entity an
 
 *Temperature, humidity, and noise directly affect how comfortable you feel at home.*
 
+![Temperature](resources/temperature.png) ![Humidity](resources/humidity.png) ![Noise Level](resources/noise.png)
+
 | Sensor | Key | Unit | Default Setpoint |
 |--------|-----|------|:----------------:|
 | Temperature | `temperature` | °C | 21 |
@@ -44,6 +46,8 @@ Every sensor comes with **preset ideal ranges** — just point to your entity an
 
 *Fine particles penetrate deep into lungs. PM2.5 is the most health-critical air metric.*
 
+![PM2.5](resources/pm25.png) ![PM10](resources/pm10.png) ![Air Quality Index](resources/aqi.png)
+
 | Sensor | Key | Unit | Default Setpoint |
 |--------|-----|------|:----------------:|
 | PM2.5 | `pm25` | µg/m³ | 12 |
@@ -53,6 +57,8 @@ Every sensor comes with **preset ideal ranges** — just point to your entity an
 ### Gases & Chemicals
 
 *CO2 indicates ventilation quality. VOCs and formaldehyde signal chemical pollution.*
+
+![CO2](resources/co2.png) ![VOC](resources/voc.png) ![TVOC](resources/tvoc.png) ![Formaldehyde](resources/formaldehyde.png) ![Radon](resources/radon.png)
 
 | Sensor | Key | Unit | Default Setpoint |
 |--------|-----|------|:----------------:|
@@ -65,6 +71,8 @@ Every sensor comes with **preset ideal ranges** — just point to your entity an
 ### Environment
 
 *Atmospheric pressure changes can trigger migraines and affect weather-sensitive people.*
+
+![Atmospheric Pressure](resources/pressure.png)
 
 | Sensor | Key | Unit | Default Setpoint |
 |--------|-----|------|:----------------:|
