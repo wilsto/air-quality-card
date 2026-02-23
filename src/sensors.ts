@@ -1,9 +1,6 @@
-/**
- * @fileoverview Air quality sensor presets
- * Default setpoints for indoor air quality monitoring.
- */
+import type { SensorsRegistry } from '../../core/src/ha/types.js';
 
-export const AIR_QUALITY_SENSORS = {
+export const AIR_QUALITY_SENSORS: SensorsRegistry = {
   temperature: {
     name: 'Temperature',
     unit: '°C',
