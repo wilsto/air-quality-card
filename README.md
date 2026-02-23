@@ -3,6 +3,8 @@
 [![Release][release-shield]][release-link] [![HACS][hacs-shield]][hacs-link] [![GitHub Activity][commits-shield]][commits-link]
 
 > Visualize the air you breathe — track pollutants, comfort, and health indicators in every room of your home.
+>
+> **Visual editor included** — configure everything from the UI, no YAML needed.
 
 ![screenshot](example/hero.png)
 
@@ -117,6 +119,16 @@ Community-tested devices that work with this card:
 
 ## Quick Start
 
+### Visual Editor (recommended)
+
+1. In your dashboard, click **Edit Dashboard** (pencil icon)
+2. Click **+ Add Card** → select **Manual** → type `custom:air-quality-card`
+3. Click **Show Visual Editor** to configure sensors, display options and colors — no YAML needed
+
+![editor](resources/editor.png)
+
+### YAML
+
 ```yaml
 type: custom:air-quality-card
 title: "Living Room Air"
@@ -134,6 +146,8 @@ That's it! The card uses sensible defaults for everything else.
 ---
 
 ## Configuration
+
+> All options below are also available in the visual editor.
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
