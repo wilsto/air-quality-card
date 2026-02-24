@@ -3,6 +3,13 @@
 All notable changes to Air Quality Card will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.6.0] - 2026-02-24
+
+### Added
+
+- Dynamic setpoint and min_limit from entities: optional `setpoint_entity` and `min_limit_entity` per sensor to read threshold values from `input_number` helpers or template sensors at runtime (core feature from pool-monitor-card#59)
+- Visual card editor fields for Setpoint entity / Min limit entity
+
 ## [0.5.0] - 2026-02-24
 
 ### Added
