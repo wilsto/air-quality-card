@@ -3,6 +3,20 @@
 All notable changes to Air Quality Card will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.15.1] - 2026-08-16
+
+### Documentation
+
+- **If you already use this card, change the type in your configuration.** v0.15.0 gave the card a second name and nothing said so to the people already using it. The README now opens on it.
+
+  ```yaml
+  type: custom:air-monitor-card   # was custom:air-quality-card
+  ```
+
+  Nothing else changes: same sensors, same options, same look. `custom:air-quality-card` keeps working and will keep working, so there is no deadline and nothing breaks if you never touch it. The reason to bother is that four cards on GitHub claim that name, and a browser lets only one of them exist. Install any of the others and whichever loads second simply does not appear, with no error to explain why.
+
+- **The install steps pointed at the wrong name in HACS.** They said to search for Air Monitor Card, which is the name in the card picker. HACS lists this card as Air Quality Card, so that search returned nothing.
+
 ## [0.15.0] - 2026-08-16
 
 ### Fixed

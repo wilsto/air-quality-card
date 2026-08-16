@@ -6,6 +6,22 @@
 
 ![screenshot](example/hero.png)
 
+> ### Already using this card? Change the type in your YAML.
+>
+> ```yaml
+> type: custom:air-monitor-card   # was custom:air-quality-card
+> ```
+>
+> Nothing else changes: same sensors, same options, same look. Your existing
+> `custom:air-quality-card` keeps working and will keep working, so there is no
+> deadline and nothing breaks if you never touch it.
+>
+> The reason to change is that four cards on GitHub claim the name
+> `air-quality-card`, and a browser lets only one of them exist. Install any of
+> the others and whichever loads second simply does not appear, with no error to
+> explain why. `air-monitor-card` belongs to this card alone, so it cannot happen
+> to you.
+
 ---
 
 ## Why this card?
@@ -104,7 +120,7 @@ Community-tested devices that work with this card:
 
 ### HACS (recommended)
 
-1. Open [HACS](https://hacs.xyz/) → **Frontend** → search for **Air Monitor Card**
+1. Open [HACS](https://hacs.xyz/) → **Frontend** → search for **Air Quality Card**
 2. Install and reload your browser
 
 [![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=wilsto&repository=air-quality-card&category=plugin)
