@@ -1,4 +1,4 @@
-# Air Quality Card — Sensor Details
+# Air Quality Card: Sensor Details
 
 This document explains each sensor, why it matters, and what the ideal ranges mean.
 

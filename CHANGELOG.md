@@ -3,11 +3,36 @@
 All notable changes to Air Quality Card will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.12.1] - 2026-08-16
+
+### Fixed
+
+- **Reading a value from an attribute no longer rounds it.** The number of decimals was counted on the entity state while the value came from an attribute. A `climate` entity's state is the word `heat`, which has no decimals at all, so a target of 20.5 °C was displayed as **21 °C**, with nothing to say it had been rounded.
+
+  ```text
+  climate.living_room
+    state:       "heat"     <- the decimals were counted here
+    temperature: 20.5       <- the value came from here
+
+  before:  21
+  after:   20.5
+  ```
+
+  This affected exactly the entities the option exists for: `climate`, `water_heater`, `weather` and anything else whose state is a word rather than a number. An explicit `display_precision` still wins, and a plain sensor reading its own state is unchanged.
+
+### Added
+
+- **Two more languages: Catalan and Danish.** Both were written by users and had been waiting for months, on repositories that are regenerated on every release and could never merge them. That was never written down anywhere, which was our fault; the contribution guide now says so.
+
+  Thank you to [@XattSPT](https://github.com/XattSPT) for the Catalan and [@Andreasb95](https://github.com/Andreasb95) for the Danish. The card now speaks 17 languages, each listed in the menu under its own name.
+
+  Both files predate four recent sensors, so those few labels fall back to English rather than blocking the rest. If you speak either language and want to complete them, the file is one page long.
+
 ## [0.12.0] - 2026-08-15
 
 ### Fixed
 
-- **A scale set with `limits` no longer describes itself as a centred one.** It borrowed the wording of a scale whose middle band is the ideal, so a reading in the middle of its range was announced as *Ideal* — carbon monoxide at 20 ppm, more than twice the World Health Organization eight-hour guideline. Clean air at the other end read *Too Low*, in blue, as though something were wrong. The bands now carry the names of the [European Air Quality Index](https://airindex.eea.europa.eu/AQI/index.html), and the bar runs good to bad instead of being painted bad-good-bad.
+- **A scale set with `limits` no longer describes itself as a centred one.** It borrowed the wording of a scale whose middle band is the ideal, so a reading in the middle of its range was announced as *Ideal*: carbon monoxide at 20 ppm, more than twice the World Health Organization eight-hour guideline. Clean air at the other end read *Too Low*, in blue, as though something were wrong. The bands now carry the names of the [European Air Quality Index](https://airindex.eea.europa.eu/AQI/index.html), and the bar runs good to bad instead of being painted bad-good-bad.
 
   ```text
     3 ppm    Too Low     ->  Good
@@ -15,7 +40,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/).
   120 ppm    Too High    ->  Very Poor
   ```
 
-  Only sensors configured with `limits` are concerned — the new carbon monoxide preset, and hand-written configurations following the PM2.5 and ORP examples. Every other sensor keeps exactly the scale it had.
+  Only sensors configured with `limits` are concerned: the new carbon monoxide preset, and hand-written configurations following the PM2.5 and ORP examples. Every other sensor keeps exactly the scale it had.
 
 - **A scale set with `limits` alone no longer collapses.** Giving the four thresholds without also giving `min` and `max` left the bar with no width, and its five numbers piled up on top of each other at the right edge. The thresholds now set the range themselves.
 
@@ -25,13 +50,13 @@ The format follows [Keep a Changelog](https://keepachangelog.com/).
   after:   0 | 6.9 | 10.3 | 34.5 | 100
   ```
 
-- **The last number of the scale is no longer cut in half.** It was centred on the right edge, so half of it fell outside the card — and the card hides what overflows. **`87` was displayed as `8`.** A truncated number does not look broken, it looks like a different value. The first and last labels are now aligned inwards.
+- **The last number of the scale is no longer cut in half.** It was centred on the right edge, so half of it fell outside the card, and the card hides what overflows. **`87` was displayed as `8`.** A truncated number does not look broken, it looks like a different value. The first and last labels are now aligned inwards.
 
 - **An untranslated label shows English instead of an internal key.** In a language where a sensor name had not been translated yet, the card printed `sensor.humidity` where a name belonged. It now falls back to English, so a new sensor no longer has to wait for fifteen translations before it can be shipped.
 
 ### Added
 
-- **Read the value from an attribute instead of the entity state.** Several integrations publish more than one measurement on a single entity — a target temperature, a battery level, a raw reading. Until now each one needed its own template sensor:
+- **Read the value from an attribute instead of the entity state.** Several integrations publish more than one measurement on a single entity: a target temperature, a battery level, a raw reading. Until now each one needed its own template sensor:
 
   ```yaml
   sensors:
@@ -42,7 +67,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/).
 
   If the attribute does not exist, the sensor reads as unavailable. It does not quietly fall back to the state, which would show an unrelated number in the place of the one you asked for.
 
-- **Carbon monoxide (`co`).** The card had CO2 but not CO, so devices measuring carbon monoxide — among them the Amazon Smart Air Quality Monitor, which has no Home Assistant integration of its own and has to be fed through a template sensor — had no preset to land on ([#5](https://github.com/wilsto/air-quality-card/issues/5)).
+- **Carbon monoxide (`co`).** The card had CO2 but not CO, so devices measuring carbon monoxide (among them the Amazon Smart Air Quality Monitor, which has no Home Assistant integration of its own and has to be fed through a template sensor) had no preset to land on ([#5](https://github.com/wilsto/air-quality-card/issues/5)).
 
   ```yaml
   type: custom:air-quality-card
@@ -51,7 +76,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/).
       entity: sensor.air_monitor_carbon_monoxide
   ```
 
-  The four thresholds are the World Health Organization indoor air quality guideline values converted to ppm — 7 mg/m³ over 24 h, 10 over 8 h, 35 over 1 h, 100 over 15 min. They are published limits rather than our own judgement: on carbon monoxide, a threshold invented to look tidy is worse than no threshold at all.
+  The four thresholds are the World Health Organization indoor air quality guideline values converted to ppm: 7 mg/m³ over 24 h, 10 over 8 h, 35 over 1 h, 100 over 15 min. They are published limits rather than our own judgement: on carbon monoxide, a threshold invented to look tidy is worse than no threshold at all.
 
 ### Documentation
 
@@ -67,7 +92,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/).
 
 ### Documentation
 
-- **Added a Styling section to the README.** The previous release made the card work with [card-mod](https://github.com/thomasloven/lovelace-card-mod) but said so only in the release notes, which scroll away. The README now carries copy-paste examples and the list of classes you can target — transparent background, title size, icon colour, scale size.
+- **Added a Styling section to the README.** The previous release made the card work with [card-mod](https://github.com/thomasloven/lovelace-card-mod) but said so only in the release notes, which scroll away. The README now carries copy-paste examples and the list of classes you can target: transparent background, title size, icon colour, scale size.
 
 ## [0.11.0] - 2026-08-15
 
@@ -90,7 +115,7 @@ card_mod:
     }
 ```
 
-  ⚠️ If you had worked around this by styling `:host`, check your rules — the background, border and shadow are now painted by `ha-card`.
+  ⚠️ If you had worked around this by styling `:host`, check your rules: the background, border and shadow are now painted by `ha-card`.
 
 - **Sizes and colours can be restyled.** Static sizing moved out of inline attributes into named classes, so a stylesheet can reach it. An inline style beats any injected rule, which is what made this impossible before:
 
@@ -106,10 +131,10 @@ card_mod:
 
 ### Fixed
 
-- The configuration dropdown works again — reported in #1.
-- **The visual editor works again on Home Assistant 2026.5 and later.** HA removed an internal component the editor relied on, and nine text fields silently stopped appearing — *Name override*, *Unit override*, *Setpoint*, *Step*, *Min limit*, *Step low*, *Step high*, *Image URL*, *Last updated attribute*. They were unreachable from the interface, though still editable in YAML. The editor no longer depends on Home Assistant's internal components, so this cannot happen again on a future update.
+- The configuration dropdown works again (reported in #1).
+- **The visual editor works again on Home Assistant 2026.5 and later.** HA removed an internal component the editor relied on, and nine text fields silently stopped appearing: *Name override*, *Unit override*, *Setpoint*, *Step*, *Min limit*, *Step low*, *Step high*, *Image URL*, *Last updated attribute*. They were unreachable from the interface, though still editable in YAML. The editor no longer depends on Home Assistant's internal components, so this cannot happen again on a future update.
 - **`min` and `max` set the scale again.** They were documented as numbers defining the range, but a number was read as an entity name, found nothing, and was ignored without warning. A number is now a scale bound; a string is still an entity whose value places a marker on the bar.
-- **Six translated languages were missing from the language menu** — Czech, Hebrew, Hungarian, Romanian, Russian, Swedish. Three entries that had no translation behind them (Polish, Simplified and Traditional Chinese) silently fell back to English; they are gone. The menu now lists all 15 translations, each in its own language.
+- **Six translated languages were missing from the language menu**: Czech, Hebrew, Hungarian, Romanian, Russian, Swedish. Three entries that had no translation behind them (Polish, Simplified and Traditional Chinese) silently fell back to English; they are gone. The menu now lists all 15 translations, each in its own language.
 
 ### Added
 
@@ -179,7 +204,7 @@ sensors:
 
 ### Added
 
-- Visual card editor with live preview — configure cards directly from the HA UI
+- Visual card editor with live preview: configure cards directly from the HA UI
 - Cards now appear in the Home Assistant card picker under "Custom cards"
 - Sensor list with expand/collapse, entity picker, and delete per sensor
 - Preset sensor dropdown with all 12 air quality presets

@@ -4,7 +4,7 @@ import { AIR_QUALITY_SENSORS } from '../src/sensors.js';
 
 // @renevelasco123 on air-quality-card#5 reported the card "does not work" for
 // the Amazon Smart Air Quality Monitor. That device measures carbon monoxide,
-// and the card had no CO preset — only CO2.
+// and the card had no CO preset, only CO2.
 //
 // The thresholds are the WHO indoor air quality guideline values converted to
 // ppm (7 mg/m3 over 24h, 10 over 8h, 35 over 1h, 100 over 15min). They are
@@ -39,7 +39,7 @@ describe('carbon monoxide preset', () => {
 });
 
 // Cards with an IMAGE_BASE_URL look for `<key>.png` and render a broken image
-// when the artwork is absent — which is what a new preset always is. A preset
+// when the artwork is absent, which is what a new preset always is. A preset
 // can therefore declare an MDI icon, and the card must prefer it over guessing
 // at a file that does not exist.
 describe('a preset can carry its own icon', () => {
