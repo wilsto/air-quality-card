@@ -1,4 +1,4 @@
-# Air Quality Card
+# Air Monitor Card
 
 [![Release][release-shield]][release-link] [![HACS][hacs-shield]][hacs-link] [![GitHub Activity][commits-shield]][commits-link]
 
@@ -26,7 +26,7 @@ See at a glance if CO2 is climbing in your bedroom, if VOCs spike after cooking,
 
 ---
 
-## Sensors (12 presets)
+## Sensors (13 presets)
 
 Every sensor comes with **preset ideal ranges**: just point to your entity and the card handles the rest. Override any value to match your setup.
 
@@ -36,7 +36,7 @@ Every sensor comes with **preset ideal ranges**: just point to your entity and t
 
 ![Temperature](resources/temperature.png) ![Humidity](resources/humidity.png) ![Noise Level](resources/noise.png)
 
-| Sensor | Key | Unit | Default Setpoint |
+| Sensor | Key | Unit | Defaults |
 |--------|-----|------|:----------------:|
 | Temperature | `temperature` | °C | 21 |
 | Humidity | `humidity` | % | 45 |
@@ -48,7 +48,7 @@ Every sensor comes with **preset ideal ranges**: just point to your entity and t
 
 ![PM2.5](resources/pm25.png) ![PM10](resources/pm10.png) ![Air Quality Index](resources/aqi.png)
 
-| Sensor | Key | Unit | Default Setpoint |
+| Sensor | Key | Unit | Defaults |
 |--------|-----|------|:----------------:|
 | PM2.5 | `pm25` | µg/m³ | 12 |
 | PM10 | `pm10` | µg/m³ | 25 |
@@ -58,10 +58,11 @@ Every sensor comes with **preset ideal ranges**: just point to your entity and t
 
 *CO2 indicates ventilation quality. VOCs and formaldehyde signal chemical pollution.*
 
-![CO2](resources/co2.png) ![VOC](resources/voc.png) ![TVOC](resources/tvoc.png) ![Formaldehyde](resources/formaldehyde.png) ![Radon](resources/radon.png)
+ ![CO2](resources/co2.png) ![VOC](resources/voc.png) ![TVOC](resources/tvoc.png) ![Formaldehyde](resources/formaldehyde.png) ![Radon](resources/radon.png)
 
-| Sensor | Key | Unit | Default Setpoint |
+| Sensor | Key | Unit | Defaults |
 |--------|-----|------|:----------------:|
+| Carbon Monoxide | `co` | ppm | 6 / 9 / 30 / 87 |
 | CO2 | `co2` | ppm | 800 |
 | VOC | `voc` | ppb | 250 |
 | TVOC | `tvoc` | µg/m³ | 300 |
@@ -74,7 +75,7 @@ Every sensor comes with **preset ideal ranges**: just point to your entity and t
 
 ![Atmospheric Pressure](resources/pressure.png)
 
-| Sensor | Key | Unit | Default Setpoint |
+| Sensor | Key | Unit | Defaults |
 |--------|-----|------|:----------------:|
 | Atmospheric Pressure | `pressure` | hPa | 1013 |
 
@@ -103,7 +104,7 @@ Community-tested devices that work with this card:
 
 ### HACS (recommended)
 
-1. Open [HACS](https://hacs.xyz/) → **Frontend** → search for **Air Quality Card**
+1. Open [HACS](https://hacs.xyz/) → **Frontend** → search for **Air Monitor Card**
 2. Install and reload your browser
 
 [![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=wilsto&repository=air-quality-card&category=plugin)
@@ -119,7 +120,7 @@ Community-tested devices that work with this card:
 ## Quick Start
 
 ```yaml
-type: custom:air-quality-card
+type: custom:air-monitor-card
 title: "Living Room Air"
 sensors:
   temperature:
@@ -135,6 +136,8 @@ That's it! The card uses sensible defaults for everything else.
 ---
 
 ## Configuration
+
+> **Two names work.** Use `custom:air-monitor-card` in new cards. `custom:air-quality-card` still works and nothing needs changing, but several other cards publish that same name, and only one of them can load. The name above is ours alone.
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
@@ -242,7 +245,7 @@ any other card.
 **Transparent, borderless:**
 
 ```yaml
-type: custom:air-quality-card
+type: custom:air-monitor-card
 card_mod:
   style: |
     ha-card {
@@ -307,7 +310,7 @@ This card is part of the **monitor-cards** family: same rendering engine, same f
 |------|-----|---------|
 | [Pool Monitor Card](https://github.com/wilsto/pool-monitor-card) | Pool & spa owners | 28 presets |
 | [Aquarium Monitor Card](https://github.com/wilsto/aquarium-monitor-card) | Freshwater & saltwater aquarium keepers | 15 presets |
-| [Air Quality Card](https://github.com/wilsto/air-quality-card) | Homeowners concerned about indoor air quality | 12 presets ← *you are here* |
+| [Air Monitor Card](https://github.com/wilsto/air-quality-card) | Homeowners concerned about indoor air quality | 13 presets ← *you are here* |
 | [Sensor Monitor Card](https://github.com/wilsto/sensor-monitor-card) | Home Assistant power users | unlimited (custom) |
 
 <!-- Badges -->

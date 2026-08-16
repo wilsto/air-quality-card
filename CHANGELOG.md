@@ -3,6 +3,41 @@
 All notable changes to Air Quality Card will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.15.0] - 2026-08-16
+
+### Fixed
+
+- **Nine measurements showed their internal key instead of their name.** A PM2.5 sensor was labelled `sensor.pm25` under the bar, a CO2 sensor `sensor.co2`, and the same for PM10, VOC, TVOC, formaldehyde, radon, air quality index and noise. They had no name defined in any language, not even English, so the card fell back to printing the key.
+
+  All nine now have a name, in the seventeen languages the card speaks. Standard abbreviations stay as they are written everywhere: PM2.5, PM10, VOC, TVOC, CO2. The rest are translated: formaldehyde, radon, noise level, air quality index.
+
+- **Atmospheric pressure was labelled Filter Pressure.** The four cards of this family share one table of measurement names, and `pressure` was named there by the pool card, where it means the pressure in a filter. An air monitor reading 1015 hPa was told it had a filter.
+
+  A card can now keep its own name for a measurement the others name differently. Nothing changes in your configuration: you still write `pressure`, it still finds the same preset with the same unit, the same ideal value of 1013 hPa and the same icon. Only the word under the bar changes.
+
+  Sharing the table remains the rule, and it is the right one: of the forty-three measurements across the four cards, thirty-one exist on a single card and most of the others want the same word everywhere. Pressure was the only one that did not.
+
+- **The names the editor offers and the names the card shows now agree.** Picking CO2 in the editor used to display Carbon Dioxide on the card, Air Quality Index displayed AQI, and the same for two more. What you choose is what you see.
+
+### Added
+
+- **The card answers to a second element name, `air-monitor-card`.** Four cards on GitHub register `air-quality-card`, this one included. When two of them are installed, whichever loads second simply does not appear, and there is no error to explain why.
+
+  ```yaml
+  type: custom:air-monitor-card
+  sensors:
+    co2:
+      entity: sensor.living_room_co2
+  ```
+
+  `custom:air-quality-card` keeps working exactly as before. Nothing has to be changed, ever. The new name is what the card picker offers from now on, so a new card never lands on the disputed one.
+
+- **The card is called Air Monitor Card** in the card picker, next to Pool Monitor Card, Aquarium Monitor Card and Sensor Monitor Card.
+
+### Documentation
+
+- **The carbon monoxide preset is documented.** It shipped for the Amazon Smart Air Quality Monitor and appeared in no README, because the page generator only understood measurements built around an ideal value, and this one is built around thresholds. It is in the sensor table now, with its four levels: 6, 9, 30 and 87 ppm.
+
 ## [0.14.1] - 2026-08-16
 
 ### Documentation
