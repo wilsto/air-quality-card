@@ -16,6 +16,20 @@ export const AIR_QUALITY_SENSORS: SensorsRegistry = {
     mode: 'centric',
     min_limit: 0,
   },
+  // Carbon monoxide. Thresholds are the WHO indoor air quality guideline values
+  // converted to ppm: 7 mg/m3 over 24h, 10 over 8h, 35 over 1h, 100 over 15min.
+  // Not our judgement — these are published limits, and CO is a safety matter.
+  co: {
+    name: 'Carbon Monoxide',
+    unit: 'ppm',
+    // No artwork for this one: without an explicit icon the card looks for
+    // co.png and renders a broken image.
+    icon: 'mdi:molecule-co',
+    limits: [6, 9, 30, 87],
+    direction: 'lower_is_better',
+    min_limit: 0,
+  },
+
   co2: {
     name: 'CO2',
     unit: 'ppm',
