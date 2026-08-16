@@ -4,7 +4,7 @@
 
 > Visualize the air you breathe: track pollutants, comfort, and health indicators in every room of your home.
 
-![screenshot](example/hero.png)
+![screenshot](example/hero.gif)
 
 > ### Already using this card? Change the type in your YAML.
 >
