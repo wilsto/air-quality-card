@@ -88,6 +88,7 @@ Community-tested devices that work with this card:
 
 | Device | Integration | Description |
 |--------|-------------|-------------|
+| [Amazon Smart Air Quality Monitor](https://www.amazon.com/Introducing-Amazon-Smart-Quality-Monitor/dp/B08W8KS8D3) | None native ([request](https://community.home-assistant.io/t/integrate-amazon-smart-air-quality-monitor/435717)) | PM2.5, VOC, carbon monoxide, temperature, humidity. Alexa only, so the readings have to be bridged in. The card gained its CO preset for it. |
 | Airthings Wave Plus / View Plus | Airthings BLE / Cloud | Radon, CO2, VOC, temperature, humidity, pressure. The gold standard for indoor air. |
 | Ikea VINDSTYRKA | ZHA / Zigbee2MQTT | Affordable PM2.5 and TVOC sensor. Zigbee connected. |
 | SCD40/SCD41 (via ESPHome) | ESPHome | Accurate CO2, temperature, humidity on an ESP32. DIY-friendly. |

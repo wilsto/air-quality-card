@@ -3,6 +3,14 @@
 All notable changes to Air Quality Card will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.14.1] - 2026-08-16
+
+### Documentation
+
+- **The Amazon Smart Air Quality Monitor is in the compatible hardware table.** The carbon monoxide preset exists because of it, and it was still not listed as a device the card works with.
+
+  It measures PM2.5, VOC, carbon monoxide, temperature and humidity, and has no Home Assistant integration of its own: the readings have to be bridged in. The table says so rather than leaving you to find out.
+
 ## [0.14.0] - 2026-08-16
 
 ### Added
