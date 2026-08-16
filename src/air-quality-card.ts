@@ -1,6 +1,7 @@
 import { MonitorCardBase, defineCard } from './card-base.js';
 import { AIR_QUALITY_SENSORS } from './sensors.js';
 import type { SensorsRegistry, CardInfo } from './ha/types.js';
+import { buildEntitySuggestion } from './entity-suggestion.js';
 
 declare let __BUILD_TIMESTAMP__: string;
 declare let __BUILD_VERSION__: string;
@@ -22,6 +23,22 @@ console.info(
   description: 'Monitor indoor air quality (CO2, PM2.5, VOC, humidity, temperature, etc.)',
   preview: true,
   documentationURL: 'https://github.com/wilsto/air-quality-card',
+  // Home Assistant 2026.6 and later: offer this card when the user picks an
+  // entity this card actually has a preset for. Returns null otherwise, so
+  // the picker does not fill up with cards that cannot render the reading.
+  getEntitySuggestion: buildEntitySuggestion(
+    'air-quality-card',
+    AIR_QUALITY_SENSORS,
+    {
+      carbon_monoxide: 'co',
+      carbon_dioxide: 'co2',
+      pm25: 'pm25',
+      pm10: 'pm10',
+      volatile_organic_compounds: 'voc',
+      volatile_organic_compounds_parts: 'voc',
+    },
+    ['co2', 'co', 'pm25', 'pm10', 'tvoc', 'voc', 'formaldehyde', 'radon', 'aqi'],
+  ),
 });
 
 export class AirQualityCard extends MonitorCardBase {
