@@ -216,6 +216,8 @@ Every option a sensor accepts:
 | `availability_entity` | string | Greys the row out when this entity is off |
 | `setpoint_entity` | string | Reads the setpoint from an entity rather than a fixed number |
 | `min_limit_entity` | string | Same, for `min_limit` |
+| `derivative_entity` | string | A Home Assistant `derivative` helper watching this measurement. Its sign gives the direction of the trend chevron, its magnitude the number of chevrons |
+| `derivative_scale` | number | How much slope is worth one chevron, and the floor below which none shows. Defaults to `0.1` |
 | `last_updated_entity` | string | Where the measurement time comes from |
 | `last_updated_attribute` | string | Attribute holding that time, e.g. PoolLab `measured_at` |
 
@@ -319,6 +321,30 @@ Set one with `display.language`, or pick it in the visual editor.
 ## Support
 
 [![coffee](https://www.buymeacoffee.com/assets/img/custom_images/black_img.png)](https://bmc.link/wilsto)
+
+---
+
+## Acknowledgments
+
+This card wouldn't be what it is today without our amazing contributors!
+
+- [rpirsc13](https://github.com/rpirsc13): Custom limits approach, and the ideas harvested from his fork (quality bands, blinking alert, window and fan entities)
+- [renevelasco123](https://github.com/renevelasco123): Amazon Smart Air Quality Monitor report that led to the CO preset
+- [LouiS22](https://github.com/LouiS22): Root cause of the element name conflict (air-monitor-card exists because of it)
+- [Sebaer1976](https://github.com/sebaer1976): German translation
+- [Splitti](https://github.com/splitti): German translation
+- [jorgemiguel4](https://github.com/jorgemiguel4): Portuguese translation
+- [Djgel](https://github.com/djgel): Portuguese translation
+- [CosminFRC](https://github.com/CosminFRC): Romanian translation
+- [Misa1515](https://github.com/misa1515): Slovak translation
+- [ViPeR5000](https://github.com/ViPeR5000): Polish translation
+- [Yehuda](https://github.com/Yehuda): Hebrew translation
+- [MrSnakeSPb](https://github.com/MrSnakeSPb): Russian translation
+- [taczirjak](https://github.com/taczirjak): Hungarian translation
+- [KIDNORswe](https://github.com/KIDNORswe): Swedish translation
+- [FejbyK](https://github.com/FejbyK): Czech translation
+- [XattSPT](https://github.com/XattSPT): Catalan translation
+- [Andreasb95](https://github.com/Andreasb95): Danish translation
 
 ## Monitor Cards Family
 
