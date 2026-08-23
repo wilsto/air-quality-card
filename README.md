@@ -44,7 +44,7 @@ See at a glance if CO2 is climbing in your bedroom, if VOCs spike after cooking,
 
 ---
 
-## Sensors (13 presets)
+## Sensors (15 presets)
 
 Every sensor comes with **preset ideal ranges**: just point to your entity and the card handles the rest. Override any value to match your setup.
 
@@ -68,24 +68,26 @@ Every sensor comes with **preset ideal ranges**: just point to your entity and t
 
 | Sensor | Key | Unit | Defaults |
 |--------|-----|------|:----------------:|
-| PM2.5 | `pm25` | µg/m³ | 12 |
-| PM10 | `pm10` | µg/m³ | 25 |
+| PM1 | `pm1` | µg/m³ | 15 / 37.5 / 50 / 75 |
+| PM2.5 | `pm25` | µg/m³ | 15 / 37.5 / 50 / 75 |
+| PM4 | `pm4` | µg/m³ | 15 / 37.5 / 50 / 75 |
+| PM10 | `pm10` | µg/m³ | 45 / 75 / 100 / 150 |
 | Air Quality Index | `aqi` | AQI | 50 |
 
 ### Gases & Chemicals
 
 *CO2 indicates ventilation quality. VOCs and formaldehyde signal chemical pollution.*
 
- ![CO2](resources/co2.png) ![VOC](resources/voc.png) ![TVOC](resources/tvoc.png) ![Formaldehyde](resources/formaldehyde.png) ![Radon](resources/radon.png)
+![CO2](resources/co2.png) ![VOC](resources/voc.png) ![TVOC](resources/tvoc.png) ![Formaldehyde](resources/formaldehyde.png) ![Radon](resources/radon.png)
 
 | Sensor | Key | Unit | Defaults |
 |--------|-----|------|:----------------:|
 | Carbon Monoxide | `co` | ppm | 6 / 9 / 30 / 87 |
-| CO2 | `co2` | ppm | 800 |
-| VOC | `voc` | ppb | 250 |
-| TVOC | `tvoc` | µg/m³ | 300 |
-| Formaldehyde | `formaldehyde` | µg/m³ | 30 |
-| Radon | `radon` | Bq/m³ | 100 |
+| CO2 | `co2` | ppm | 500 / 800 / 1000 / 2000 |
+| VOC | `voc` | ppb | 250 / 500 / 1000 / 2000 |
+| TVOC | `tvoc` | µg/m³ | 300 / 1000 / 3000 / 10000 |
+| Formaldehyde | `formaldehyde` | µg/m³ | 10 / 30 / 50 / 100 |
+| Radon | `radon` | Bq/m³ | 50 / 100 / 150 / 300 |
 
 ### Environment
 
@@ -411,7 +413,7 @@ This card is part of the **monitor-cards** family: same rendering engine, same f
 |------|-----|---------|
 | [Pool Monitor Card](https://github.com/wilsto/pool-monitor-card) | Pool & spa owners | 28 presets |
 | [Aquarium Monitor Card](https://github.com/wilsto/aquarium-monitor-card) | Freshwater & saltwater aquarium keepers | 15 presets |
-| [Air Monitor Card](https://github.com/wilsto/air-quality-card) | Homeowners concerned about indoor air quality | 13 presets ← *you are here* |
+| [Air Monitor Card](https://github.com/wilsto/air-quality-card) | Homeowners concerned about indoor air quality | 15 presets ← *you are here* |
 | [Sensor Monitor Card](https://github.com/wilsto/sensor-monitor-card) | Home Assistant power users | unlimited (custom) |
 
 <!-- Badges -->

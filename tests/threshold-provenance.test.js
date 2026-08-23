@@ -57,6 +57,12 @@ const DELIVERED = {
   co2: { unit: 'ppm', limits: [500, 800, 1000, 2000], ours: [500, 800] },
   pm25: { unit: 'µg/m³', limits: [15, 37.5, 50, 75], ours: [] },
   pm10: { unit: 'µg/m³', limits: [45, 75, 100, 150], ours: [] },
+  // Same four numbers as pm25, and every one of them ours: WHO publishes them
+  // for PM2.5, and nothing publishes them for these two fractions. The values
+  // being identical to a sourced row is exactly why the status column has to be
+  // read rather than guessed from the numbers.
+  pm1: { unit: 'µg/m³', limits: [15, 37.5, 50, 75], ours: [15, 37.5, 50, 75] },
+  pm4: { unit: 'µg/m³', limits: [15, 37.5, 50, 75], ours: [15, 37.5, 50, 75] },
   voc: { unit: 'ppb', limits: [250, 500, 1000, 2000], ours: [500, 1000] },
   tvoc: { unit: 'µg/m³', limits: [300, 1000, 3000, 10000], ours: [] },
   formaldehyde: { unit: 'µg/m³', limits: [10, 30, 50, 100], ours: [10, 30] },

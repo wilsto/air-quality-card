@@ -116,6 +116,83 @@ export const AIR_QUALITY_SENSORS: SensorsRegistry = {
     min_limit: 0,
     category: 'particulates',
   },
+  // PM1 and PM4 complete the four fractions a common sensor reports (#67), and
+  // neither has a published scale. No authority sets one: WHO 2021 covers PM2.5
+  // and PM10 only, its chapter on other PM types offering good practice
+  // statements rather than guideline values; Directive (EU) 2024/2881 does not
+  // list either size among the pollutants it sets assessment thresholds for;
+  // and Airthings, the vendor guide this card already borrows radon and VOC
+  // bands from, publishes none, calling PM2.5 its "officially supported and
+  // documented" metric while PM1 is only "also shown".
+  //
+  // So both scales below are the PM2.5 scale, transposed. PO decision (#67),
+  // taken against the recommendation to ship the names alone. Every bound is
+  // OURS: the number is published, its application to this size fraction is
+  // not. They are not WHO values for PM1 or PM4, and must never be quoted as
+  // such. They are WHO values for PM2.5, used somewhere else on purpose.
+  //
+  // The two transpositions do not have the same standing, and the difference is
+  // the whole reason this comment is long. Mass is nested, PM1 <= PM2.5 <= PM4
+  // <= PM10: each fraction contains the smaller ones.
+
+  // PM1. THIS TRANSPOSITION IS OPTIMISTIC, AND A GREEN BAR HERE PROVES NOTHING.
+  // PM1 is contained in PM2.5, so a PM1 reading below the limit says nothing
+  // about PM2.5, which can be far higher: the particles between 1 and 2.5 µm are
+  // not counted here at all. Good PM1 is not evidence of good air. The PM4
+  // transposition below runs the other way and is prudent; this one is not.
+  //
+  //     15 µg/m³ - OURS. The WHO 2021 24-hour AQG level for PM2.5, read off
+  //                this table and applied to PM1 by choice.
+  //   37.5 µg/m³ - OURS. WHO 24-hour interim target 3 for PM2.5, likewise.
+  //     50 µg/m³ - OURS. WHO 24-hour interim target 2 for PM2.5, likewise.
+  //     75 µg/m³ - OURS. WHO 24-hour interim target 1 for PM2.5, likewise.
+  //
+  // https://www.ncbi.nlm.nih.gov/books/NBK574591/table/ch3.tab24/
+  //
+  // No artwork exists for this one: without an explicit icon the card looks for
+  // pm1.png and renders a broken image, as CO did before it got its own.
+  pm1: {
+    name: 'PM1',
+    unit: 'µg/m³',
+    icon: 'mdi:molecule',
+    limits: [15, 37.5, 50, 75],
+    direction: 'lower_is_better',
+    min_limit: 0,
+    category: 'particulates',
+  },
+  // PM4. THIS TRANSPOSITION IS PRUDENT, WHICH IS WHY IT IS NOT THE PM10 SCALE.
+  // PM2.5 is contained in PM4, so a PM4 reading below the limit guarantees PM2.5
+  // is below it too: the scale can only ever be harsher than the published one,
+  // never more forgiving. Reusing the looser PM10 scale here would have inverted
+  // that and let a PM4 of 40 read Good while its PM2.5 content sat at nearly
+  // three times the WHO level.
+  //
+  //     15 µg/m³ - OURS. The WHO 2021 24-hour AQG level for PM2.5, applied to
+  //                PM4 by choice.
+  //   37.5 µg/m³ - OURS. WHO 24-hour interim target 3 for PM2.5, likewise.
+  //     50 µg/m³ - OURS. WHO 24-hour interim target 2 for PM2.5, likewise.
+  //     75 µg/m³ - OURS. WHO 24-hour interim target 1 for PM2.5, likewise.
+  //
+  // https://www.ncbi.nlm.nih.gov/books/NBK574591/table/ch3.tab24/
+  //
+  // The only published number that touches this size is occupational and does
+  // not belong on a living room card: the respirable fraction, which ISO 7708
+  // defines with the same 4 µm cut, carries an OSHA permissible exposure limit
+  // of 5 mg/m³ over eight hours for healthy adults at work. That is 5000 µg/m³,
+  // over three hundred times the WHO PM2.5 figure above.
+  // https://www.osha.gov/annotated-pels/table-z-1
+  //
+  // No pm4.png either, so the icon is explicit for the same reason as PM1.
+  pm4: {
+    name: 'PM4',
+    unit: 'µg/m³',
+    icon: 'mdi:molecule',
+    limits: [15, 37.5, 50, 75],
+    direction: 'lower_is_better',
+    min_limit: 0,
+    category: 'particulates',
+  },
+
   // VOC. THIS IS A SENSOR VENDOR INDEX, NOT A STANDARD. No authority publishes
   // a total-VOC guideline value. The reading is a "digital nose" number rather
   // than the measurement of a named substance, so this scale ranks readings
