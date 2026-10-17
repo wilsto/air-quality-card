@@ -48,10 +48,13 @@ export const AIR_QUALITY_SENSORS: SensorsRegistry = {
   //
   //    500 ppm - OURS, deduced. Sits just above the 250-400 ppm outdoor
   //              background Airthings cites. No source puts a boundary here.
-  //    800 ppm - OURS, deduced by interpolation inside the 400-1000 ppm band
-  //              Airthings calls "typical of a well ventilated indoor space".
-  //              800 circulates widely as a ventilation target, but the primary
-  //              document could not be read, so it is not claimed as sourced.
+  //    800 ppm - taken as published: the French High Council for Public Health
+  //              (HCSP) reads "une concentration supérieure à 0,08 % ou 800 ppm"
+  //              as "le signe d'une aération insuffisante". Quoted from the
+  //              Ministry of Education guidance that relays it, because the HCSP
+  //              advice itself could not be read by the tool (#123). An airing
+  //              signal, not a health limit, like the rest of this scale.
+  //              https://education.gouv.fr/media/91520/download
   //   1000 ppm - taken as published: an Airthings band boundary, and the
   //              hundred-year-old Pettenkofer ventilation convention.
   //   2000 ppm - taken as published: the Airthings band boundary above which its
@@ -260,13 +263,15 @@ export const AIR_QUALITY_SENSORS: SensorsRegistry = {
     min_limit: 0,
     category: 'gases',
   },
-  // Formaldehyde. Two of the four bounds are ours, and are marked as such: no
-  // authority publishes a graded indoor scale for it, only a single guideline
-  // value. The scale is honest about which half of it is borrowed.
+  // Formaldehyde. No authority publishes a graded indoor scale for it, so the
+  // four bounds come from three documents, each for a different exposure.
   //
-  //    10 µg/m³ - OURS, no source. @rpirsc13's own subdivision of the safe zone
-  //               (wilsto/air-quality-card#4), which he states is his.
-  //    30 µg/m³ - OURS, no source. Same subdivision.
+  //    10 µg/m³ - taken as published: the French long-term indoor guideline
+  //               value (décret n° 2011-1727), in force since 1 January 2023.
+  //               https://aida.ineris.fr/reglementation/decret-ndeg-2011-1727-021211-relatif-valeurs-guides-lair-interieur-formaldehyde
+  //    30 µg/m³ - taken as published: the same decree's value for 2015 to 2022,
+  //               which it then lowered to 10. They are @rpirsc13's bounds
+  //               (wilsto/air-quality-card#4), and this is where they come from.
   //    50 µg/m³ - taken as published: the eight-hour figure (about 40 ppb) in
   //               the Airly guide, which cites no authority for it.
   //               https://airly.org/en/acceptable-levels-of-formaldehyde-in-air-how-to-test-it
@@ -275,9 +280,11 @@ export const AIR_QUALITY_SENSORS: SensorsRegistry = {
   //               carries a health meaning, and the one the scale turns bad on.
   //               https://www.ncbi.nlm.nih.gov/books/NBK138711/
   //
-  // The ANSES figures were looked at and dropped: the search returned 10 and
-  // 100 µg/m³ for the same long-term value on different pages, so nothing from
-  // that trail is used until it is read at the source.
+  // Why 10 and 100 both turn up as "the long-term value" in French pages (#123):
+  // they are two different figures. 10 is the regulatory guideline value of the
+  // decree above, a target for buildings. 100 is the health-based guideline
+  // value (VGAI) of the ANSES, the same figure as the WHO one. Neither page was
+  // wrong; they were not talking about the same number.
   formaldehyde: {
     name: 'Formaldehyde',
     unit: 'µg/m³',

@@ -73,7 +73,7 @@ template:
         availability: "{{ states('sensor.YOUR_CO2') | is_number }}"
 ```
 
-Not every bound here is a published figure: the registry marks `OURS` the ones it deduced. It cites, alongside them: <https://www.airthings.com/en/contaminants/what-is-carbon-dioxide>.
+Not every bound here is a published figure: the registry marks `OURS` the ones it deduced. It cites, alongside them: <https://education.gouv.fr/media/91520/download>, <https://www.airthings.com/en/contaminants/what-is-carbon-dioxide>.
 
 ### PM1 (`pm1`)
 
@@ -234,7 +234,7 @@ template:
         availability: "{{ states('sensor.YOUR_FORMALDEHYDE') | is_number }}"
 ```
 
-Not every bound here is a published figure: the registry marks `OURS` the ones it deduced. It cites, alongside them: <https://airly.org/en/acceptable-levels-of-formaldehyde-in-air-how-to-test-it>, <https://www.ncbi.nlm.nih.gov/books/NBK138711/>.
+Sources the registry cites for these bounds: <https://aida.ineris.fr/reglementation/decret-ndeg-2011-1727-021211-relatif-valeurs-guides-lair-interieur-formaldehyde>, <https://airly.org/en/acceptable-levels-of-formaldehyde-in-air-how-to-test-it>, <https://www.ncbi.nlm.nih.gov/books/NBK138711/>.
 
 ### Radon (`radon`)
 

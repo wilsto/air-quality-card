@@ -8,6 +8,16 @@ between two release tags, so the list keeps itself and a check refuses an entry
 that no longer matches. 0.15.4 and below were written by hand,
 before that derivation existed, and are kept exactly as they were.
 
+## [0.22.2] - 2026-10-17
+
+### Added
+
+- Le CO2 à 800 ppm et le formaldéhyde à 10 et 30 µg/m³ ont leur source
+
+### Documentation
+
+- The session merges a release PR once the PO says yes on a card
+
 ## [0.22.1] - 2026-10-17
 
 ### Added

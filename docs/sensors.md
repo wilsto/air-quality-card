@@ -82,7 +82,7 @@ Colourless and odourless, so the reading is the only warning. Every bound is a W
 - **Unit**: ppm
 - **Defaults**: 500 / 800 / 1000 / 2000
 
-A ventilation signal, not a health threshold: no authority publishes a CO2 guideline value for indoor air. Outdoor baseline: ~420 ppm. Above 1000 ppm the room is under-aired, and above 2000 ppm the Airthings guide these bands come from reports headaches and loss of concentration.
+A ventilation signal, not a health threshold: no authority publishes a CO2 guideline value for indoor air. Outdoor baseline: ~420 ppm. Above 800 ppm the French High Council for Public Health reads the airing as insufficient, above 1000 ppm the room is under-aired, and above 2000 ppm the Airthings guide these bands come from reports headaches and loss of concentration.
 
 ### VOC (`voc`)
 
@@ -103,7 +103,7 @@ Total VOC measurement. Useful as a general "chemical pollution" indicator.
 - **Unit**: µg/m³
 - **Defaults**: 10 / 30 / 50 / 100
 
-Off-gases from pressed wood, carpets. WHO indoor guideline: 100 µg/m³, not to be exceeded over any 30-minute period. Carcinogenic.
+Off-gases from pressed wood, carpets. Carcinogenic. WHO indoor guideline: 100 µg/m³, not to be exceeded over any 30-minute period. The two lower bounds are the French long-term guideline values for buildings: 30 µg/m³ until 2022, lowered to 10 µg/m³ from 2023.
 
 ### Radon (`radon`)
 

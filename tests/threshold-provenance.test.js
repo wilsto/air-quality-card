@@ -54,7 +54,7 @@ const build = (key, value) => {
 // which is a test somebody has to justify touching.
 const DELIVERED = {
   co: { unit: 'ppm', limits: [6, 9, 30, 87], ours: [] },
-  co2: { unit: 'ppm', limits: [500, 800, 1000, 2000], ours: [500, 800] },
+  co2: { unit: 'ppm', limits: [500, 800, 1000, 2000], ours: [500] },
   pm25: { unit: 'µg/m³', limits: [15, 37.5, 50, 75], ours: [] },
   pm10: { unit: 'µg/m³', limits: [45, 75, 100, 150], ours: [] },
   // Same four numbers as pm25, and every one of them ours: WHO publishes them
@@ -65,7 +65,7 @@ const DELIVERED = {
   pm4: { unit: 'µg/m³', limits: [15, 37.5, 50, 75], ours: [15, 37.5, 50, 75] },
   voc: { unit: 'ppb', limits: [250, 500, 1000, 2000], ours: [500, 1000] },
   tvoc: { unit: 'µg/m³', limits: [300, 1000, 3000, 10000], ours: [] },
-  formaldehyde: { unit: 'µg/m³', limits: [10, 30, 50, 100], ours: [10, 30] },
+  formaldehyde: { unit: 'µg/m³', limits: [10, 30, 50, 100], ours: [] },
   radon: { unit: 'Bq/m³', limits: [50, 100, 150, 300], ours: [50] },
 };
 
@@ -174,5 +174,29 @@ describe('a scale that is not a health scale says so', () => {
   it('TVOC is not the ppb vendor index wearing a µg/m³ label', () => {
     expect(AIR_QUALITY_SENSORS.tvoc.limits).not.toEqual(AIR_QUALITY_SENSORS.voc.limits);
     expect(provenanceBlock('tvoc').join('\n')).toContain('Umweltbundesamt');
+  });
+});
+
+// The two leads #123 left unread, now read at a source that can be opened. Both
+// change a label and no number: the scale a reader sees stays where it was.
+describe('the leads #123 left open are closed at their source', () => {
+  it('formaldehyde quotes the French decree for its two lower bounds', () => {
+    const block = provenanceBlock('formaldehyde').join('\n');
+    expect(block).toContain('2011-1727');
+    expect(block).toContain('https://aida.ineris.fr/');
+  });
+
+  // The old note dropped ANSES because its pages gave 10 and 100 for "the same"
+  // long-term value. They are two different figures, and the note has to say so
+  // or the next reader will drop the trail again.
+  it('formaldehyde explains why 10 and 100 both turned up for the long term', () => {
+    expect(provenanceBlock('formaldehyde').join('\n')).toContain('ANSES');
+  });
+
+  it('CO2 quotes the HCSP airing signal for 800 ppm, and still is no health scale', () => {
+    const block = provenanceBlock('co2').join('\n');
+    expect(block).toContain('HCSP');
+    expect(block).toContain('https://education.gouv.fr/');
+    expect(block).toContain('VENTILATION CONVENTION, NOT A HEALTH THRESHOLD');
   });
 });
