@@ -75,52 +75,6 @@ template:
 
 Not every bound here is a published figure: the registry marks `OURS` the ones it deduced. It cites, alongside them: <https://www.airthings.com/en/contaminants/what-is-carbon-dioxide>.
 
-### PM2.5 (`pm25`)
-
-| Reading, in µg/m³ | Band |
-| --- | --- |
-| below 15 | Good |
-| 15 to 37.5 | Fair |
-| 37.5 to 50 | Moderate |
-| 50 to 75 | Poor |
-| 75 and above | Very Poor |
-
-```yaml
-template:
-  - sensor:
-      - name: "PM2.5 band"
-        unique_id: pm25_band
-        state: >
-          {% set v = states('sensor.YOUR_PM25') | float(0) %}
-          {{ 'Good' if v < 15 else 'Fair' if v < 37.5 else 'Moderate' if v < 50 else 'Poor' if v < 75 else 'Very Poor' }}
-        availability: "{{ states('sensor.YOUR_PM25') | is_number }}"
-```
-
-Sources the registry cites for these bounds: <https://www.ncbi.nlm.nih.gov/books/NBK574591/table/ch3.tab24/>.
-
-### PM10 (`pm10`)
-
-| Reading, in µg/m³ | Band |
-| --- | --- |
-| below 45 | Good |
-| 45 to 75 | Fair |
-| 75 to 100 | Moderate |
-| 100 to 150 | Poor |
-| 150 and above | Very Poor |
-
-```yaml
-template:
-  - sensor:
-      - name: "PM10 band"
-        unique_id: pm10_band
-        state: >
-          {% set v = states('sensor.YOUR_PM10') | float(0) %}
-          {{ 'Good' if v < 45 else 'Fair' if v < 75 else 'Moderate' if v < 100 else 'Poor' if v < 150 else 'Very Poor' }}
-        availability: "{{ states('sensor.YOUR_PM10') | is_number }}"
-```
-
-Sources the registry cites for these bounds: <https://www.ncbi.nlm.nih.gov/books/NBK574591/table/ch3.tab24/>.
-
 ### PM1 (`pm1`)
 
 | Reading, in µg/m³ | Band |
@@ -144,6 +98,29 @@ template:
 
 Not every bound here is a published figure: the registry marks `OURS` the ones it deduced. It cites, alongside them: <https://www.ncbi.nlm.nih.gov/books/NBK574591/table/ch3.tab24/>.
 
+### PM2.5 (`pm25`)
+
+| Reading, in µg/m³ | Band |
+| --- | --- |
+| below 15 | Good |
+| 15 to 37.5 | Fair |
+| 37.5 to 50 | Moderate |
+| 50 to 75 | Poor |
+| 75 and above | Very Poor |
+
+```yaml
+template:
+  - sensor:
+      - name: "PM2.5 band"
+        unique_id: pm25_band
+        state: >
+          {% set v = states('sensor.YOUR_PM25') | float(0) %}
+          {{ 'Good' if v < 15 else 'Fair' if v < 37.5 else 'Moderate' if v < 50 else 'Poor' if v < 75 else 'Very Poor' }}
+        availability: "{{ states('sensor.YOUR_PM25') | is_number }}"
+```
+
+Sources the registry cites for these bounds: <https://www.ncbi.nlm.nih.gov/books/NBK574591/table/ch3.tab24/>.
+
 ### PM4 (`pm4`)
 
 | Reading, in µg/m³ | Band |
@@ -166,6 +143,29 @@ template:
 ```
 
 Not every bound here is a published figure: the registry marks `OURS` the ones it deduced. It cites, alongside them: <https://www.ncbi.nlm.nih.gov/books/NBK574591/table/ch3.tab24/>, <https://www.osha.gov/annotated-pels/table-z-1>.
+
+### PM10 (`pm10`)
+
+| Reading, in µg/m³ | Band |
+| --- | --- |
+| below 45 | Good |
+| 45 to 75 | Fair |
+| 75 to 100 | Moderate |
+| 100 to 150 | Poor |
+| 150 and above | Very Poor |
+
+```yaml
+template:
+  - sensor:
+      - name: "PM10 band"
+        unique_id: pm10_band
+        state: >
+          {% set v = states('sensor.YOUR_PM10') | float(0) %}
+          {{ 'Good' if v < 45 else 'Fair' if v < 75 else 'Moderate' if v < 100 else 'Poor' if v < 150 else 'Very Poor' }}
+        availability: "{{ states('sensor.YOUR_PM10') | is_number }}"
+```
+
+Sources the registry cites for these bounds: <https://www.ncbi.nlm.nih.gov/books/NBK574591/table/ch3.tab24/>.
 
 ### VOC (`voc`)
 

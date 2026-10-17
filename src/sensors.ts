@@ -71,51 +71,6 @@ export const AIR_QUALITY_SENSORS: SensorsRegistry = {
     min_limit: 0,
     category: 'gases',
   },
-  // PM2.5. Every bound is a WHO 2021 published figure for the 24-hour averaging
-  // period, taken from the summary table of recommended AQG levels and interim
-  // targets. Nothing here is ours.
-  //
-  //     15 µg/m³ - taken as published: the WHO 24-hour AQG level.
-  //   37.5 µg/m³ - taken as published: WHO 24-hour interim target 3.
-  //     50 µg/m³ - taken as published: WHO 24-hour interim target 2.
-  //     75 µg/m³ - taken as published: WHO 24-hour interim target 1.
-  //
-  // https://www.ncbi.nlm.nih.gov/books/NBK574591/table/ch3.tab24/
-  //
-  // Interim target 4 (25 µg/m³) is left out so both particulate scales are read
-  // the same way: on PM10 it sits 5 µg/m³ above the guideline level and would
-  // make a band too narrow to see. The guidelines also note the 24-hour figures
-  // are 99th percentiles, three to four exceedance days a year, which a live
-  // reading is not; the scale answers "how does this compare", not "have I
-  // breached a guideline".
-  //
-  // @rpirsc13's [2, 5, 10, 15] is not used: 5 and 15 are the WHO annual and
-  // 24-hour AQG levels, but 2 and 10 are his own, and mixing an annual value
-  // into a short-term scale compares two different things.
-  pm25: {
-    name: 'PM2.5',
-    unit: 'µg/m³',
-    limits: [15, 37.5, 50, 75],
-    direction: 'lower_is_better',
-    min_limit: 0,
-    category: 'particulates',
-  },
-  // PM10. Same source, same averaging period, same selection as PM2.5.
-  //
-  //    45 µg/m³ - taken as published: the WHO 24-hour AQG level.
-  //    75 µg/m³ - taken as published: WHO 24-hour interim target 3.
-  //   100 µg/m³ - taken as published: WHO 24-hour interim target 2.
-  //   150 µg/m³ - taken as published: WHO 24-hour interim target 1.
-  //
-  // https://www.ncbi.nlm.nih.gov/books/NBK574591/table/ch3.tab24/
-  pm10: {
-    name: 'PM10',
-    unit: 'µg/m³',
-    limits: [45, 75, 100, 150],
-    direction: 'lower_is_better',
-    min_limit: 0,
-    category: 'particulates',
-  },
   // PM1 and PM4 complete the four fractions a common sensor reports (#67), and
   // neither has a published scale. No authority sets one: WHO 2021 covers PM2.5
   // and PM10 only, its chapter on other PM types offering good practice
@@ -160,6 +115,35 @@ export const AIR_QUALITY_SENSORS: SensorsRegistry = {
     min_limit: 0,
     category: 'particulates',
   },
+  // PM2.5. Every bound is a WHO 2021 published figure for the 24-hour averaging
+  // period, taken from the summary table of recommended AQG levels and interim
+  // targets. Nothing here is ours.
+  //
+  //     15 µg/m³ - taken as published: the WHO 24-hour AQG level.
+  //   37.5 µg/m³ - taken as published: WHO 24-hour interim target 3.
+  //     50 µg/m³ - taken as published: WHO 24-hour interim target 2.
+  //     75 µg/m³ - taken as published: WHO 24-hour interim target 1.
+  //
+  // https://www.ncbi.nlm.nih.gov/books/NBK574591/table/ch3.tab24/
+  //
+  // Interim target 4 (25 µg/m³) is left out so both particulate scales are read
+  // the same way: on PM10 it sits 5 µg/m³ above the guideline level and would
+  // make a band too narrow to see. The guidelines also note the 24-hour figures
+  // are 99th percentiles, three to four exceedance days a year, which a live
+  // reading is not; the scale answers "how does this compare", not "have I
+  // breached a guideline".
+  //
+  // @rpirsc13's [2, 5, 10, 15] is not used: 5 and 15 are the WHO annual and
+  // 24-hour AQG levels, but 2 and 10 are his own, and mixing an annual value
+  // into a short-term scale compares two different things.
+  pm25: {
+    name: 'PM2.5',
+    unit: 'µg/m³',
+    limits: [15, 37.5, 50, 75],
+    direction: 'lower_is_better',
+    min_limit: 0,
+    category: 'particulates',
+  },
   // PM4. THIS TRANSPOSITION IS PRUDENT, WHICH IS WHY IT IS NOT THE PM10 SCALE.
   // PM2.5 is contained in PM4, so a PM4 reading below the limit guarantees PM2.5
   // is below it too: the scale can only ever be harsher than the published one,
@@ -188,6 +172,22 @@ export const AIR_QUALITY_SENSORS: SensorsRegistry = {
     unit: 'µg/m³',
     icon: 'mdi:molecule',
     limits: [15, 37.5, 50, 75],
+    direction: 'lower_is_better',
+    min_limit: 0,
+    category: 'particulates',
+  },
+  // PM10. Same source, same averaging period, same selection as PM2.5.
+  //
+  //    45 µg/m³ - taken as published: the WHO 24-hour AQG level.
+  //    75 µg/m³ - taken as published: WHO 24-hour interim target 3.
+  //   100 µg/m³ - taken as published: WHO 24-hour interim target 2.
+  //   150 µg/m³ - taken as published: WHO 24-hour interim target 1.
+  //
+  // https://www.ncbi.nlm.nih.gov/books/NBK574591/table/ch3.tab24/
+  pm10: {
+    name: 'PM10',
+    unit: 'µg/m³',
+    limits: [45, 75, 100, 150],
     direction: 'lower_is_better',
     min_limit: 0,
     category: 'particulates',
